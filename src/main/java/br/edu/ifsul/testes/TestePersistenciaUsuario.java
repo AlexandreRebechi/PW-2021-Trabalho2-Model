@@ -5,11 +5,9 @@
  */
 package br.edu.ifsul.testes;
 
-import br.edu.ifsul.model.Aluguel;
-import br.edu.ifsul.model.Mensalidades;
+import br.edu.ifsul.model.Pessoa;
+import br.edu.ifsul.model.Usuario;
 import java.io.Serializable;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -18,20 +16,21 @@ import javax.persistence.Persistence;
  *
  * @author Antonio
  */
-public class TestePersistenciaMensalidades implements Serializable{
+public class TestePersistenciaUsuario implements Serializable{
     
     public static void main(String[] args) {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("PW-2021-1-Trabalho2-modelPU");
         EntityManager em = emf.createEntityManager();
-        Mensalidades m = new Mensalidades();
+        Usuario u = new Usuario();
         
-        m.setValor(600.12);
-        m.setDataPagamento(new GregorianCalendar(2021, Calendar.AUGUST, 10));
-        m.setValorPagamento(300.6);
-        m.setVencimento(new GregorianCalendar(2021, Calendar.OCTOBER, 20));
-        m.setAluguel(em.find(Aluguel.class, 5));
+        u.setNomeUsuario("usuario1");
+        u.setSenha("123456");
+        u.setAtivo(true);
+        u.setEmail("usuario1@ifsul.edu.br");        
+        u.setNome("usuario1");        
+        
         em.getTransaction().begin();
-        em.persist(m);
+        em.persist(u);
         em.getTransaction().commit();
         em.close();
         emf.close();

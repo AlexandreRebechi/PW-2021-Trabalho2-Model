@@ -5,11 +5,10 @@
  */
 package br.edu.ifsul.testes;
 
-import br.edu.ifsul.model.Aluguel;
-import br.edu.ifsul.model.Mensalidades;
+import br.edu.ifsul.model.Pessoa;
+import br.edu.ifsul.model.Permissao;
+import br.edu.ifsul.model.Usuario;
 import java.io.Serializable;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -18,20 +17,19 @@ import javax.persistence.Persistence;
  *
  * @author Antonio
  */
-public class TestePersistenciaMensalidades implements Serializable{
+public class TestePersistirPermicoes implements Serializable{
     
     public static void main(String[] args) {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("PW-2021-1-Trabalho2-modelPU");
         EntityManager em = emf.createEntityManager();
-        Mensalidades m = new Mensalidades();
-        
-        m.setValor(600.12);
-        m.setDataPagamento(new GregorianCalendar(2021, Calendar.AUGUST, 10));
-        m.setValorPagamento(300.6);
-        m.setVencimento(new GregorianCalendar(2021, Calendar.OCTOBER, 20));
-        m.setAluguel(em.find(Aluguel.class, 5));
+        Usuario u = em.find(Usuario.class, "usuario1");
+        Permissao p1 = em.find(Permissao.class, "ADMINISTRADOR");
+        Permissao p2 = em.find(Permissao.class, "USUARIO");
+        u.getPermissoes().add(p1);
+        u.getPermissoes().add(p2);
         em.getTransaction().begin();
-        em.persist(m);
+        em.merge(u);
+        
         em.getTransaction().commit();
         em.close();
         emf.close();

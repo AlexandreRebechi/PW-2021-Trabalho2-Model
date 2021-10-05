@@ -54,6 +54,12 @@ public class UnidadeCondominial implements Serializable {
     @NotNull(message = "O condominio deve ser informado")
     @JoinColumn(name = "condominio", referencedColumnName = "id", nullable = false)
     private Condominio condominio;
+    
+    @ManyToOne
+    @NotNull(message = "O proprietario deve ser informado")
+    @JoinColumn(name = "proprietario", referencedColumnName = "id", nullable = false)
+    private Pessoa proprietario;
+    
 
     public UnidadeCondominial() {
 
@@ -166,6 +172,20 @@ public class UnidadeCondominial implements Serializable {
             return false;
         }
         return true;
+    }
+
+    /**
+     * @return the proprietario
+     */
+    public Pessoa getProprietario() {
+        return proprietario;
+    }
+
+    /**
+     * @param proprietario the proprietario to set
+     */
+    public void setProprietario(Pessoa proprietario) {
+        this.proprietario = proprietario;
     }
 
 }

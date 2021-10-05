@@ -21,9 +21,9 @@ public class TestePersistirListMensalidades implements Serializable{
     public static void main(String[] args) {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("PW-2021-1-Trabalho2-modelPU");
         EntityManager em = emf.createEntityManager();
-        Aluguel a = em.find(Aluguel.class, 1);
+        Aluguel a = em.find(Aluguel.class, 5);
         
-        Mensalidades m = em.find(Mensalidades.class, 1);
+        Mensalidades m = em.find(Mensalidades.class, 2);
         a.adicionarMensalidades(m);
         
        

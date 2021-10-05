@@ -67,6 +67,11 @@ public class Aluguel implements Serializable {
     @JoinColumn(name = "locatario", referencedColumnName = "id", nullable = false)
     private Locatario locatario;
 
+   @ManyToOne
+   @NotNull(message = "O usuario deve ser informado")
+   @JoinColumn(name = "usuario", referencedColumnName = "nome_usuario", nullable = false)
+   private Usuario nome_usuario; 
+    
     @OneToMany(mappedBy = "aluguel", cascade = CascadeType.ALL,
             orphanRemoval = true, fetch = FetchType.LAZY)
     private List<Mensalidades> listMensalidades = new ArrayList<>();
@@ -225,5 +230,22 @@ public class Aluguel implements Serializable {
     public void setListMensalidades(List<Mensalidades> listMensalidades) {
         this.listMensalidades = listMensalidades;
     }
+
+    /**
+     * @return the nome_usuario
+     */
+    public Usuario getNome_usuario() {
+        return nome_usuario;
+    }
+
+    /**
+     * @param nome_usuario the nome_usuario to set
+     */
+    public void setNome_usuario(Usuario nome_usuario) {
+        this.nome_usuario = nome_usuario;
+    }
+
+    
+   
 
 }

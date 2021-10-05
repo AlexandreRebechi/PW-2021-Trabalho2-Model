@@ -23,7 +23,7 @@ public class TestePersistirListUnidadeCondominial implements Serializable{
         EntityManager em = emf.createEntityManager();
         Condominio c = em.find(Condominio.class, 1);
         
-        UnidadeCondominial uc1 = em.find(UnidadeCondominial.class, 2);
+        UnidadeCondominial uc1 = em.find(UnidadeCondominial.class, 4);
         
         c.adicionarUnidadeCondominial(uc1);
        

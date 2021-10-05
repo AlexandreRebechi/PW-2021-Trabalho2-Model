@@ -8,6 +8,7 @@ package br.edu.ifsul.testes;
 import br.edu.ifsul.model.Aluguel;
 import br.edu.ifsul.model.Locatario;
 import br.edu.ifsul.model.UnidadeCondominial;
+import br.edu.ifsul.model.Usuario;
 import java.io.Serializable;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -29,9 +30,9 @@ public class TestePersistenciaAluguel implements Serializable{
         a.setValor(400.44);
         a.setFimContrato(new GregorianCalendar(2021, Calendar.NOVEMBER, 5));
         a.setDiaVencimento(6);
-        a.setUnidadeCondominial(em.find(UnidadeCondominial.class, 2));
+        a.setUnidadeCondominial(em.find(UnidadeCondominial.class, 3));
         a.setLocatario(em.find(Locatario.class, 2));
-        
+        a.setNome_usuario(em.find(Usuario.class, "teste"));
         
         em.getTransaction().begin();
         em.persist(a);

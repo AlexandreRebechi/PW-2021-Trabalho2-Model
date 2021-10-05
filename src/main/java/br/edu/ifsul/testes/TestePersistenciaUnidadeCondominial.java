@@ -6,6 +6,7 @@
 package br.edu.ifsul.testes;
 
 import br.edu.ifsul.model.Condominio;
+import br.edu.ifsul.model.Pessoa;
 import br.edu.ifsul.model.UnidadeCondominial;
 import java.io.Serializable;
 import javax.persistence.EntityManager;
@@ -23,12 +24,15 @@ public class TestePersistenciaUnidadeCondominial implements Serializable{
         EntityManager em = emf.createEntityManager();
         UnidadeCondominial uc = new UnidadeCondominial();
         
-        uc.setNumero("4321");
-        uc.setDescricao("predio azul");
+        
+       
+        
+        uc.setNumero("6575");
+        uc.setDescricao("predio banco");
         uc.setArea(800.77);
         uc.setNumeroQuarto(3);
         uc.setCondominio(em.find(Condominio.class, 1));
-        
+        uc.setProprietario(em.find(Pessoa.class, 3));
         em.getTransaction().begin();
         em.persist(uc);
         em.getTransaction().commit();

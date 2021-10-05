@@ -22,10 +22,10 @@ public class TestePersistenciaPessoa implements Serializable{
         EntityManager em = emf.createEntityManager();
         Pessoa p = new Pessoa();
         
-        p.setNome("Leonardo");
-        p.setCpf("340.368.720-10");
-        p.setTelefone("(15) 33373-3519");
-        p.setEmail("leo33@hotmail.com");
+        p.setNome("Rafos");
+        p.setCpf("102.107.850-63");
+        p.setTelefone("(15) 66473-3519");
+        p.setEmail("Rafos345@hotmail.com");
         
         em.getTransaction().begin();
         em.persist(p);

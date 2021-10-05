@@ -60,6 +60,9 @@ public class Condominio implements Serializable{
     @Column(name = "cep", length = 9,nullable = false)
     private String cep;
 
+    
+    
+    
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "recursos",
             joinColumns

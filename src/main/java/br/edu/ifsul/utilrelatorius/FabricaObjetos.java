@@ -7,7 +7,9 @@ package br.edu.ifsul.utilrelatorius;
 
 import br.edu.ifsul.model.Aluguel;
 import br.edu.ifsul.model.Locatario;
+import br.edu.ifsul.model.Mensalidades;
 import br.edu.ifsul.model.UnidadeCondominial;
+import br.edu.ifsul.model.Usuario;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -21,8 +23,8 @@ public class FabricaObjetos {
     public static List<Aluguel> carregaAluguel() {
         List<Aluguel> lista = new ArrayList<>();
         Aluguel a = new Aluguel();
-        a.setId(1);
-        a.setValor(500.89);
+        a.setId(5);
+        a.setValor(400.44);
         a.setInicioContrato(Calendar.getInstance());
         a.setFimContrato(Calendar.getInstance());
         a.setDiaVencimento(23);
@@ -30,8 +32,26 @@ public class FabricaObjetos {
         uc.setNumero("3435");
         a.setUnidadeCondominial(uc);
         Locatario l = new Locatario();
-        l.setNome("Alexandre");
+        l.setNome("Stephan");
         a.setLocatario(l);
+        
+        Usuario u = new Usuario();
+        
+        u.setNome("Alexandre");
+        
+        a.setNome_usuario(u);
+        
+       
+        Mensalidades m = new Mensalidades();
+        
+        m.setValor(500.98);
+        m.setVencimento(Calendar.getInstance());
+        m.setValorPagamento(600.56);
+        m.setDataPagamento(Calendar.getInstance());
+        m.setAluguel(a);
+        
+        a.getListMensalidades().add(m);
+        
         lista.add(a);
         return lista;
 
